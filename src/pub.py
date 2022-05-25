@@ -19,7 +19,7 @@ class Pub:
     def sell_drink(self, drink, customer):
         if not self.confirmed_age(customer):
             return False
-        if customer.wallet <= drink.price:
+        if not self.cst_can_afford(customer, drink):
             return False
         else:
             customer.wallet -= drink.price
