@@ -5,8 +5,12 @@ class Customer:
         self.age = get_age
         self.drunkenness = 0
 
-    def decrease_wallet(self, price):
-        self.wallet -= price
+    def sufficient_funds(self, item):
+        return self.wallet >= item.price
+
+    def decrease_wallet(self, drink):
+        if self.sufficient_funds(drink):
+            self.wallet -= drink.price
 
     def increase_drunk(self, alcohol):
         drunkenness += alcohol

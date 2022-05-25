@@ -8,9 +8,7 @@ class Pub:
         self.till += cash_in
 
     def check_enough_cash(self, customer, drink_price):
-        if customer.wallet >= drink_price:
-            return True
-        return False
+        return customer.wallet >= drink_price
 
     def confirmed_age(self, customer):
         return customer.age >= 18
@@ -21,11 +19,15 @@ class Pub:
     def sell_drink(self, drink, customer):
         if not self.confirmed_age(customer):
             return False
+        if customer.wallet <= drink.price:
+            return False
         else:
             customer.wallet -= drink.price
             self.till += drink.price
 
+    def cst_can_afford(self, customer, drink):
+        return customer.sufficient_funds(drink)
 
-# check customer age
+
 # check drunk
 # stock value ie.value of all drinks

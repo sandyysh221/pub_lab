@@ -43,7 +43,7 @@ class TestPub(unittest.TestCase):
     def test_drink_sold(self):
         self.pub.increase_till(self.drink.price)
         self.assertEqual(102, self.pub.till)
-        self.customer0.decrease_wallet(self.drink.price)
+        self.customer0.decrease_wallet(self.drink)
         self.assertEqual(8, self.customer0.wallet)
 
     def test_sell_drink(self):
@@ -51,10 +51,10 @@ class TestPub(unittest.TestCase):
         self.assertEqual(102, self.pub.till)
         self.assertEqual(8, self.customer0.wallet)
 
-    # def test_sell_drink__no_money(self):
-    #     self.pub.sell_drink(self.drink.price, self.customer1)
-    #     self.assertEqual(100, self.pub.till)
-    # #     self.assertEqual(0, self.customer1.wallet)
+    def test_sell_drink__no_money(self):
+        self.pub.sell_drink(self.drink, self.customer1)
+        self.assertEqual(100, self.pub.till)
+        self.assertEqual(0, self.customer1.wallet)
 
     def test_sell_drink__underaged(self):
         self.pub.sell_drink(self.drink.price, self.customer2)
