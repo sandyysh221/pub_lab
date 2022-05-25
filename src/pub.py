@@ -19,8 +19,11 @@ class Pub:
         self.drinks.append(drink)
 
     def sell_drink(self, drink, customer):
-        customer.wallet -= drink.price
-        self.till += drink.price
+        if not self.confirmed_age(customer):
+            return False
+        else:
+            customer.wallet -= drink.price
+            self.till += drink.price
 
 
 # check customer age

@@ -56,7 +56,7 @@ class TestPub(unittest.TestCase):
     #     self.assertEqual(100, self.pub.till)
     # #     self.assertEqual(0, self.customer1.wallet)
 
-    # def test_sell_drink__underaged(self):
-    #     self.pub.sell_drink(self.drink.price, self.customer2)
-    #     self.assertEqual(100, self.pub.till)
-    #     self.assertEqual(10, self.customer2.wallet)
+    def test_sell_drink__underaged(self):
+        self.pub.sell_drink(self.drink.price, self.customer2)
+        self.assertEqual(100, self.pub.till)
+        self.assertEqual(10, self.customer2.wallet)
