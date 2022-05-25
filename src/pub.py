@@ -1,10 +1,8 @@
-from src.customer import Customer
-
-
 class Pub:
     def __init__(self, get_name, get_till):
         self.name = get_name
         self.till = get_till
+        self.drinks = []
 
     def increase_till(self, cash_in):
         self.till += cash_in
@@ -14,21 +12,15 @@ class Pub:
             return True
         return False
 
-    def check_age(self, customer):
-        if customer.age >= 18:
-            return True
-        return False
+    def confirmed_age(self, customer):
+        return customer.age >= 18
 
-    def sell_drink(self, drink_price, customer):
-        if (
-            self.check_enough_cash(customer, drink_price) == True
-            and customer.age == True
-        ):
+    def add_drink_to_customer(self, drink):
+        self.drinks.append(drink)
 
-            self.increase_till(drink_price)
-            customer.decrease_wallet(drink_price)
-
-        return False
+    def sell_drink(self, drink, customer):
+        customer.wallet -= drink.price
+        self.till += drink.price
 
 
 # check customer age
