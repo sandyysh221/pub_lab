@@ -11,9 +11,7 @@ class Customer:
     def decrease_wallet(self, drink):
         if self.sufficient_funds(drink):
             self.wallet -= drink.price
-
-    def increase_drunk(self, alcohol):
-        drunkenness += alcohol
+            self.drunkenness += drink.alcohol_level
 
 
 # buy drink reduce wallet, increase till

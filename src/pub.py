@@ -21,12 +21,17 @@ class Pub:
             return False
         if not self.cst_can_afford(customer, drink):
             return False
+        if self.cst_too_drunk(customer):
+            return False
         else:
             customer.wallet -= drink.price
             self.till += drink.price
 
     def cst_can_afford(self, customer, drink):
         return customer.sufficient_funds(drink)
+
+    def cst_too_drunk(self, customer):
+        return customer.drunkenness >= 50
 
 
 # check drunk
